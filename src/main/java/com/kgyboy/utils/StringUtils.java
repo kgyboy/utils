@@ -1,5 +1,7 @@
 package com.kgyboy.utils;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -49,4 +51,12 @@ public class StringUtils {
         return list;
     }
 
+    /**
+     * 字符串根据转任意类
+     */
+
+    public static Object conver(Object value, Class<?> toValueType) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.convertValue(value, toValueType);
+    }
 }
