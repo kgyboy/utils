@@ -37,9 +37,16 @@ public class StringUtils {
      * 正则截取字符串
      */
     public static List<String> regexSubstr(String str, char start, char end) {
+
         List<String> list = new ArrayList<>();
-        String regex = "\\" + start + "[^\\" + end + "]+\\" + end;
-        Pattern pattern = Pattern.compile(regex);
+//        String regex = "\\" + start + "[^\\" + end + "]+\\" + end;
+        StringBuffer sb = new StringBuffer();
+        sb.append("\\");
+        sb.append(start);
+        sb.append(".*?");
+        sb.append("\\");
+        sb.append(end);
+        Pattern pattern = Pattern.compile(sb.toString());
         Matcher matcher = pattern.matcher(str);
         while (matcher.find()) {
             list.add(matcher.group().replace(start + "", "").replace(end + "", ""));
