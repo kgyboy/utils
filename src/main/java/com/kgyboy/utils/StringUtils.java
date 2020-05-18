@@ -27,13 +27,9 @@ public class StringUtils {
      * 判断是否为空
      */
     public static boolean isBlank(String str) {
-        if (null == str || str.replace(" ", "").isEmpty()) {
+        if (null == str || "null".equalsIgnoreCase(str) || str.replace(" ", "").isEmpty()) {
             return true;
         }
-
-//        if ("null".equals(str)) {
-//            return true;
-//        }
         return false;
     }
 

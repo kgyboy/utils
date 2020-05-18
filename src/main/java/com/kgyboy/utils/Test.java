@@ -5,6 +5,9 @@ import com.kgyboy.rule.RegularRule;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class Test {
     public static void say(){
@@ -20,14 +23,15 @@ public class Test {
 //        m.put("d",45);
 //        Set<String> keys1 = m.keySet();
 //        for (String key: keys1) {
-//            System.out.println(m.get(key));
+//            System.out.println("old:"+m.get(key));
 //        }
 //        System.out.println("===================");
 //        Map<String, Object> map = MapUtils.dealNullVal(m);
 //        Set<String> keys = map.keySet();
 //        for (String key: keys) {
-//            System.out.println(map.get(key));
+//            System.out.println("new:"+map.get(key));
 //        }
+
 
 //        System.out.println(RegularUtils.checkMobile("13912534568"));
 //        System.out.println(RegularUtils.checkEmail("27@qq.com"));
@@ -43,13 +47,13 @@ public class Test {
 //        System.out.println(" ".equals(" "));
 //        System.out.println(aa.replace(" ", "").isEmpty());
 
-        System.out.println(NumberUtils.format("12.344",2));
-
-        try {
-            System.out.println(DateUtils.dateToStr(new Date(),DateUtils.YY_M_D_H_M_S));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        System.out.println(NumberUtils.format("12.344",2));
+//
+//        try {
+//            System.out.println(DateUtils.dateToStr(new Date(),DateUtils.YY_M_D_H_M_S));
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
     }
 
