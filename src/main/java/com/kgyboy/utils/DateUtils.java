@@ -92,4 +92,40 @@ public class DateUtils {
         return false;
     }
 
+    /**
+     * 根据day_of_week返回星期字段
+     * @param seq
+     * @return
+     */
+    public static String getWeekDay(int seq) {
+        StringBuffer week = new StringBuffer();
+        switch (seq) {
+            case 1:
+                week.append("星期日");
+                break;
+            case 2:
+                week.append("星期一");
+                break;
+            case 3:
+                week.append("星期二");
+                break;
+            case 4:
+                week.append("星期三");
+                break;
+            case 5:
+                week.append("星期四");
+                break;
+            case 6:
+                week.append("星期五");
+                break;
+            case 7:
+                week.append("星期六");
+                break;
+            default:
+                week.append("未知");
+                break;
+        }
+        return week.toString();
+    }
+
 }
