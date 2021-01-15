@@ -8,12 +8,12 @@ import java.util.List;
  * parallelStream().foreach()使用线程安全的
  *
  *
- * @ClassName CollectionUtils
+ * @ClassName CollectionUtil
  * @Description //TODO
  * @Author yangsibiao
  * @Date 2020/9/25
  */
-public class CollectionUtils {
+public class CollectionUtil {
 
     /**
      * `1.为什么list的大小不固定？

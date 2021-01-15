@@ -6,7 +6,15 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class DateUtils {
+/**
+ *
+ * @ClassName DateUtil
+ * @Description //TODO
+ * @Author yangsibiao
+ * @Date 2021/1/15
+ */
+
+public class DateUtil {
     public static final String Y = "yyyy";
     public static final String M = "MM";
     public static final String D = "dd";
@@ -44,7 +52,7 @@ public class DateUtils {
     public static Date dateAddDays(Date date,int days){
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
-        calendar.add(calendar.DATE, days);//把日期往后增加一天.整数往后推,负数往前移动
+        calendar.add(Calendar.DATE, days);//把日期往后增加一天.整数往后推,负数往前移动
 
         return calendar.getTime();
     }
@@ -86,10 +94,8 @@ public class DateUtils {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date d1 = df.parse(date1);
         Date d2 = df.parse(date2);
-        if(new BigDecimal(d1.getTime()).subtract(new BigDecimal(d2.getTime())).compareTo(new BigDecimal(mills))>-1){
-            return true;
-        }
-        return false;
+
+        return new BigDecimal(d1.getTime()).subtract(new BigDecimal(d2.getTime())).compareTo(new BigDecimal(mills))>-1;
     }
 
     /**
@@ -98,7 +104,7 @@ public class DateUtils {
      * @return
      */
     public static String getWeekDay(int seq) {
-        StringBuffer week = new StringBuffer();
+        StringBuilder week = new StringBuilder();
         switch (seq) {
             case 1:
                 week.append("星期日");

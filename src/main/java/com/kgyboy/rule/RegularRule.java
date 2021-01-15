@@ -1,8 +1,11 @@
 package com.kgyboy.rule;
 
 /**
- * author yang
- * time 2019-01-25
+ *
+ * @ClassName RegularRule
+ * @Description //TODO
+ * @Author yangsibiao
+ * @Date 2021/1/15
  */
 public enum RegularRule {
     /*
@@ -36,7 +39,11 @@ public enum RegularRule {
     /*
     是否包含数字
      */
-    REGEX_CONTAIN_NUMBER(1008, "\\d+")
+    REGEX_CONTAIN_NUMBER(1008, "[\\d+]"),
+    /*
+    筛选数字
+     */
+    REGEX_FILTER_NUMBER(1009, "[^\\d+]")
 
 
     ;

@@ -1,36 +1,35 @@
 package com.kgyboy.utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.kgyboy.rule.RegularRule;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * author yang
- * time 2019-01-25
+ *
+ * @ClassName StringUtil
+ * @Description //TODO
+ * @Author yangsibiao
+ * @Date 2021/1/15
  */
-public class StringUtils {
+public class StringUtil {
 
     /**
      * 判断是否不为空
      */
     public static boolean isNotBlank(String str) {
-        if (isBlank(str)) {
-            return false;
-        }
-        return true;
+        return !isBlank(str);
     }
 
     /**
      * 判断是否为空
      */
     public static boolean isBlank(String str) {
-        if (null == str || "null".equalsIgnoreCase(str) || str.replace(" ", "").isEmpty()) {
-            return true;
-        }
-        return false;
+        return null == str || "null".equalsIgnoreCase(str) || str.replace(" ", "").isEmpty();
     }
 
     /**
@@ -39,14 +38,8 @@ public class StringUtils {
     public static List<String> regexSubstr(String str, char start, char end) {
 
         List<String> list = new ArrayList<>();
-//        String regex = "\\" + start + "[^\\" + end + "]+\\" + end;
-        StringBuffer sb = new StringBuffer();
-        sb.append("\\");
-        sb.append(start);
-        sb.append(".*?");
-        sb.append("\\");
-        sb.append(end);
-        Pattern pattern = Pattern.compile(sb.toString());
+        String reg = String.format("\\%s.*?\\%s", start, end);
+        Pattern pattern = Pattern.compile(reg);
         Matcher matcher = pattern.matcher(str);
         while (matcher.find()) {
             list.add(matcher.group().replace(start + "", "").replace(end + "", ""));
@@ -62,4 +55,15 @@ public class StringUtils {
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.convertValue(value, toValueType);
     }
+
+    /**
+     * 筛选数字或者筛选非数字
+     * 1008非数字；1009数字
+     */
+    public static String filterNumber(String str, int code) {
+        Pattern p = Pattern.compile(Objects.requireNonNull(RegularRule.getReg(code)));
+        Matcher m = p.matcher(str);
+        return m.replaceAll("");
+    }
+
 }

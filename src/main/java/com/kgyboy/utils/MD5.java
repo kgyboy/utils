@@ -10,6 +10,7 @@ import java.security.NoSuchAlgorithmException;
  * @Date 2020/7/16
  */
 public class MD5 {
+
     public static String getMD5(String plainText, int length) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");//获取MD5实例
