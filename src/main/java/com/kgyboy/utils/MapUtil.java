@@ -1,6 +1,7 @@
 package com.kgyboy.utils;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -12,7 +13,12 @@ import java.util.Map;
  */
 public class MapUtil {
 
-    public static Map<String, Object> dealNullVal(Map<String, Object> map) {
+    /**
+     * 未改变源数据map
+     * @param map
+     * @return
+     */
+    public static Map<String, Object> dealNullValUnchanged(Map<String, Object> map) {
         Map<String, Object> m = new HashMap<>();
         for (String key : map.keySet()) {
             String val = (String) map.get(key);
@@ -21,5 +27,22 @@ public class MapUtil {
             }
         }
         return m;
+    }
+
+    /**
+     * 改变源数据map
+     * @param map
+     * @return
+     */
+    public static Map<String, Object> dealNullValChanged(Map<String, Object> map) {
+        Iterator var2 = map.keySet().iterator();
+        while(var2.hasNext()) {
+            String key = (String)var2.next();
+            if (StringUtil.isBlank((String) map.get(key))) {
+                map.remove(key);
+                var2 = map.keySet().iterator();
+            }
+        }
+        return map;
     }
 }
