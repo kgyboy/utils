@@ -3,6 +3,8 @@ package com.kgyboy.utils;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -65,14 +67,12 @@ public class DateUtil {
      * @throws ParseException
      */
     public static Date strToDate(String dateStr, String format) throws ParseException {
-        System.out.println("dateStr : "+dateStr);
-        System.out.println("format : "+format);
         SimpleDateFormat formatter = new SimpleDateFormat(format);
         return formatter.parse(dateStr);
     }
 
     /**
-     * @description Date日期->字符串日期
+     * @description Date日期->字符串日期，线程非安全
      * @param date 日期
      * @param format 正则 eg:yyyy-MM-dd HH:mm:ss
      * @return String
@@ -133,5 +133,29 @@ public class DateUtil {
         }
         return week.toString();
     }
+
+    /**
+     * @description 字符串日期->LocalDateTime日期
+     * @param localDateTime 字符串日期
+     * @param format 正则 eg:yyyy-MM-dd HH:mm:ss
+     * @return LocalDateTime
+     */
+    public static LocalDateTime strToLocalDateTime(String localDateTime, String format){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
+        return LocalDateTime.parse(localDateTime, formatter);
+    }
+
+    /**
+     * @description LocalDateTime日期->字符串日期，线程安全
+     * @param localDateTime 日期
+     * @param format 正则 eg:yyyy-MM-dd HH:mm:ss
+     * @return String
+     */
+    public static String localDateTimeToStr(LocalDateTime localDateTime, String format) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
+        return formatter.format(localDateTime);
+    }
+
+
 
 }
