@@ -3,8 +3,10 @@ package com.kgyboy.utils;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -154,6 +156,26 @@ public class DateUtil {
     public static String localDateTimeToStr(LocalDateTime localDateTime, String format) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
         return formatter.format(localDateTime);
+    }
+
+    /**
+     * @description 计算日期n天后的日期
+     * @param localDateTime 日期
+     * @param days 正数为days天后，负数为days天前
+     * @return Date
+     */
+    public static LocalDateTime localDateTimeAddDays(LocalDateTime localDateTime,long days){
+        return localDateTime.plus(days, ChronoUnit.DAYS);
+    }
+
+    /**
+     * @description 计算日期n天后的日期
+     * @param localDate 日期
+     * @param days 正数为days天后，负数为days天前
+     * @return Date
+     */
+    public static LocalDate localDateAddDays(LocalDate localDate, long days){
+        return localDate.plus(days, ChronoUnit.DAYS);
     }
 
 
